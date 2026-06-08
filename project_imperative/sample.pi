@@ -1,0 +1,13 @@
+attach_variable x = [numbertext]10
+attach_variable message = [stringtext]"Hello Project Imperative"
+
+print message
+print x
+
+if_(x)-[numbertext]- == 10 -[ then -[
+    print [stringtext]"x is ten"
+-] -]
+
+repeat i = 3 times -{
+    print i
+-}

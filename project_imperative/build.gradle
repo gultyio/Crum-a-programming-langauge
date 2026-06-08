@@ -1,0 +1,37 @@
+plugins {
+    id 'java'
+    id 'application'
+}
+
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(8)
+    }
+    withSourcesJar()
+}
+
+application {
+    mainClass = 'ProjectStructure'
+}
+
+sourceSets {
+    main {
+        java {
+            srcDirs = ['.']
+        }
+    }
+}
+
+tasks.named('jar') {
+    manifest {
+        attributes('Main-Class': 'ProjectStructure')
+    }
+}
+
+tasks.register('runSample', JavaExec) {
+    group = 'application'
+    description = 'Compile and run sample.pi'
+    classpath = sourceSets.main.runtimeClasspath
+    mainClass.set('ProjectStructure')
+    args 'sample.pi'
+}
